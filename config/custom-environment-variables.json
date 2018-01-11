@@ -1,0 +1,10 @@
+{
+  "app": {
+    "port": "APP_PORT",
+    "name": "APP_NAME",
+    "logLevel": "LOG_LEVEL"
+  },
+  "openWeather": {
+    "apiKey": "OPEN_WEATHER_API_KEY"
+  }
+}

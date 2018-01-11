@@ -1,0 +1,7 @@
+Dockerfile
+*.md
+coverage
+node_modules
+.*
+!.eslintrc
+!.istanbul.yml

@@ -1,0 +1,12 @@
+{
+  "extends": "standard",
+  "rules": {
+    "generator-star-spacing": ["error", { "before": false, "after": true }],
+    "no-use-before-define": ["error", { "functions": false, "classes": true, "variables": true }],
+    "operator-linebreak": ["error", "after"],
+    "padded-blocks": "off"
+  },
+  "env": {
+    "mocha": true
+  }
+}

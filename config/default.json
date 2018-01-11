@@ -1,0 +1,7 @@
+{
+  "app": {
+    "port": "3030",
+    "name": "gamification-platform-backend",
+    "logLevel": "info"
+  }
+}
