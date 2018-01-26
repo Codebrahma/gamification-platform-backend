@@ -1,13 +1,11 @@
-'use strict'
-
 /**
  * Root level hook
  */
 
 before((done) => {
-  done()
-})
+	done();
+});
 
 after((done) => {
-  done()
-})
+	done();
+});
