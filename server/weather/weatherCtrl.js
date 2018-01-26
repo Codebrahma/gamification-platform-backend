@@ -1,11 +1,7 @@
-'use strict'
+const weatherService = require('./weatherService');
 
-const weatherService = require('./weatherService')
-
-const getWeatherByCityName = async function (cityName) {
-  return weatherService.getWeatherByCityName(cityName)
-}
+const getWeatherByCityName = async cityName => weatherService.getWeatherByCityName(cityName);
 
 module.exports = {
-  getWeatherByCityName
-}
+	getWeatherByCityName,
+};
