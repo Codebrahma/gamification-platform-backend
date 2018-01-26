@@ -3,8 +3,6 @@
 // require new relic at the top only in production environment
 if (process.env.NODE_ENV === 'production') require('newrelic');
 
-const config = require('config');
-
 const server = require('./server');
 const logger = require('./server/utils/logger');
 
@@ -34,17 +32,17 @@ process.on('SIGTERM', gracefulStopServer);
 
 /**
  * Starts the server
- * @returns {Promise.<void>}
+ * Uses try / catch to start the server
+ * This is a change fro V 16
  */
-const startServer = async () => {
+async function start() {
 	try {
-		// add things here before the app starts, like database connection check etc
 		await server.start();
-		logger.info(`server started at port: ${config.get('app.port')} with env: ${config.util.getEnv('NODE_ENV')}`);
-	} catch (error) {
-		logger.error(error);
+	} catch (err) {
+		console.log(err);
 		process.exit(1);
 	}
-};
+	console.log('Server running at:', server.info.uri);
+}
 
-startServer();
+start();
