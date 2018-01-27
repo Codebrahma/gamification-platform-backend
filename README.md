@@ -22,7 +22,7 @@ $ yarn
 
 ```bash
 # Start Server
-# Set environment variables defined in `config/custom-environment-variables.json` like `OPEN_WEATHER_API_KEY=xxx`
+# Set environment variables defined in `config/custom-environment-variables.json`
 $ yarn start
 ```
 
