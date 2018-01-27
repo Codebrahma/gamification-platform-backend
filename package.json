@@ -31,16 +31,16 @@
     "bunyan": "1.8.12",
     "config": "1.26.2",
     "glob": "7.1.2",
-    "good": "false7.3.0",
+    "good": "8.0.0-rc1",
     "good-console": "6.4.0",
     "hapi": "false17.2.0",
     "hapi-swagger": "false9.0.2",
     "http-status": "1.0.1",
-    "inert": "4.2.1",
+    "inert": "false5.1.0",
     "joi": "10.6.0",
     "lodash": "4.17.4",
     "newrelic": "2.2.0",
-    "vision": "4.1.1"
+    "vision": "false5.3.1"
   },
   "devDependencies": {
     "all-contributors-cli": "false4.10.1",

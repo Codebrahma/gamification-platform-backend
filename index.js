@@ -4,6 +4,7 @@
 if (process.env.NODE_ENV === 'production') require('newrelic');
 
 const server = require('./server');
+const plugins = require('./plugins');
 const logger = require('./server/utils/logger');
 
 const gracefulStopServer = () => {
@@ -37,6 +38,7 @@ process.on('SIGTERM', gracefulStopServer);
  */
 async function start() {
 	try {
+		await server.register(plugins);
 		await server.start();
 	} catch (err) {
 		console.log(err);

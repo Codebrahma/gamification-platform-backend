@@ -26,7 +26,7 @@ if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
 		Inert,
 		Vision,
 		{
-			register: HapiSwagger,
+			plugin: HapiSwagger,
 			options: {
 				info: {
 					title: Package.description,
@@ -39,7 +39,7 @@ if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
 
 	// add good console for log reporting
 	plugins.push({
-		register: Good,
+		plugin: Good,
 		options: {
 			reporters: {
 				console: [
@@ -51,6 +51,7 @@ if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
 			},
 		},
 	});
-}
+}	
+
 
 module.exports = plugins;
