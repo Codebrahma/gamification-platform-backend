@@ -6,6 +6,7 @@ if (process.env.NODE_ENV === 'production') require('newrelic');
 const server = require('./server');
 const plugins = require('./plugins');
 const logger = require('./server/utils/logger');
+const connectDatabase = require('./database');
 
 const gracefulStopServer = () => {
 	// Wait 10 secs for existing connection to close and then exit.
@@ -47,4 +48,13 @@ async function start() {
 	console.log('Server running at:', server.info.uri);
 }
 
-start();
+// This will try to establish a connection with database,
+// if connection established	successfully status will be true.
+// if connection failed status will be false.
+connectDatabase((status) => {
+	if (status === true) {
+		start();
+	} else {
+		process.exit(1);
+	}
+});
