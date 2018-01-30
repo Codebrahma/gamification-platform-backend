@@ -39,6 +39,7 @@
     "inert": "false5.1.0",
     "joi": "10.6.0",
     "lodash": "4.17.4",
+    "mongoose": "false5.0.2",
     "newrelic": "2.2.0",
     "vision": "false5.3.1"
   },
