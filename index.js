@@ -51,10 +51,14 @@ async function start() {
 // This will try to establish a connection with database,
 // if connection established	successfully status will be true.
 // if connection failed status will be false.
-connectDatabase((status) => {
-	if (status === true) {
-		start();
-	} else {
+connectDatabase((error) => {
+	// if connecting database failed with error
+	if (error) {
+		console.log('Connection with database failed.');
+		// print error to console.
+		console.log(error);
 		process.exit(1);
+	} else {
+		start();
 	}
 });
