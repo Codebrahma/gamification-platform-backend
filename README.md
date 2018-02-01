@@ -71,7 +71,10 @@ yarn lint
 Please feel free to open an issue if you can have any questions or trouble using this starter kit.
 
 ## Contributions
-Contributions are all welcome and encouraged. For code contributions submit a pull request with unit test.
+Contributions are all welcome and encouraged.
+
+Follow this [guide](https://github.com/Codebrahma/gamification-platform-backend/wiki) to learn how to contribute.
+
 
 ## License
 This project is licensed under the [MIT License](https://github.com/Codebrahma/gamification-platform-backend/blob/master/LICENSE)
