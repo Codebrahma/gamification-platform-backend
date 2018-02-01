@@ -42,23 +42,19 @@ async function start() {
 		await server.register(plugins);
 		await server.start();
 	} catch (err) {
-		console.log(err);
+		logger.error(err);
 		process.exit(1);
 	}
-	console.log('Server running at:', server.info.uri);
+	logger.info('Server running at:', server.info.uri);
 }
 
 // This will try to establish a connection with database,
-// if connection established	successfully status will be true.
-// if connection failed status will be false.
 connectDatabase((error) => {
 	// if connecting database failed with error
 	if (error) {
-		console.log('Connection with database failed.');
-		// print error to console.
-		console.log(error);
+		logger.error(`Connection with database failed. ${error}`);
 		process.exit(1);
-	} else {
-		start();
 	}
+	logger.info('Connection with database succeeded.');
+	start();
 });
