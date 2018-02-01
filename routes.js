@@ -7,7 +7,7 @@ const routes = [{
 	method: 'GET',
 	path: '/ping',
 	handler: (request, reply) => reply('pong'),
-	config: {
+	options: {
 		tags: [
 			'api',
 		],
