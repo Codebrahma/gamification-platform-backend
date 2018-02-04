@@ -8,16 +8,19 @@ const Good = require('good');
 const config = require('config');
 const appoloServer = require('apollo-server-hapi');
 
+// Imports the schema, resolvers and the model
 const graphQLSchema = require('./server/registration/graphQLSchema.js');
 const graphQLResolvers = require('./server/registration/graphQLResolvers.js');
 const User = require('./server/registration/registrationSchema.js');
 
 const { makeExecutableSchema } = require('graphql-tools');
 
+// Uses graphQL tools to make create a proper schema
 const executableSchema = makeExecutableSchema({
 	typeDefs: [graphQLSchema],
 	resolvers: graphQLResolvers({ User }),
 });
+
 /**
  * Internal modules
  */
@@ -63,7 +66,7 @@ if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
 		},
 	});
 
-	// add Hapi
+	// HAPI Graphql for HTTP endpoints
 	plugins.push({
 		plugin: appoloServer.graphqlHapi,
 		options: {
@@ -77,6 +80,7 @@ if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
 		},
 	});
 
+	// graphiql interface
 	plugins.push({
 		plugin: appoloServer.graphiqlHapi,
 		options: {
