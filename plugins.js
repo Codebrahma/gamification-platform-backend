@@ -6,7 +6,18 @@ const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 const Good = require('good');
 const config = require('config');
+const appoloServer = require('apollo-server-hapi');
 
+const graphQLSchema = require('./server/registration/graphQLSchema.js');
+const graphQLResolvers = require('./server/registration/graphQLResolvers.js');
+const User = require('./server/registration/registrationSchema.js');
+
+const { makeExecutableSchema } = require('graphql-tools');
+
+const executableSchema = makeExecutableSchema({
+	typeDefs: [graphQLSchema],
+	resolvers: graphQLResolvers({ User }),
+});
 /**
  * Internal modules
  */
@@ -48,6 +59,31 @@ if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
 					},
 					'stdout',
 				],
+			},
+		},
+	});
+
+	// add Hapi
+	plugins.push({
+		plugin: appoloServer.graphqlHapi,
+		options: {
+			path: '/graphql',
+			graphqlOptions: {
+				schema: executableSchema,
+			},
+			route: {
+				cors: true,
+			},
+		},
+	});
+
+	plugins.push({
+		plugin: appoloServer.graphiqlHapi,
+		options: {
+			path: '/graphiql',
+			graphiqlOptions: {
+				schema: executableSchema,
+				endpointURL: '/graphql',
 			},
 		},
 	});
