@@ -1,18 +1,21 @@
+// Resolver functions for my schema
 const resolvers = models => ({
 	Query: {
-		getUserById(root, { id }) {
-			return models.User.findById(id).then(response => response);
-		},
+		// Gets User by email
 		getUserByEmail(root, { email }) {
 			return models.User.findOne({ email }).then(response => response);
 		},
-		// Mutation: {
-		// 	createUser(root, args) {
-		// 		console.log('mutation args ', args);
-		// 		const user = new models.User(args);
-		// 		return user.save().then(response => response);
-		// 	},
-		// },
+		// Gets User by userName
+		getUserByUserName(root, { userName }) {
+			return models.User.findOne({ userName }).then(response => response);
+		},
+	},
+	Mutation: {
+		// Creates a new user
+		createUser(root, args) {
+			const user = new models.User(args);
+			return user.save().then(response => response);
+		},
 	},
 });
 
