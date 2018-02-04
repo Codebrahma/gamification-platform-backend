@@ -8,19 +8,7 @@ const Good = require('good');
 const config = require('config');
 const appoloServer = require('apollo-server-hapi');
 
-// Imports the schema, resolvers and the model
-const graphQLSchema = require('./server/registration/graphQLSchema.js');
-const graphQLResolvers = require('./server/registration/graphQLResolvers.js');
-const User = require('./server/registration/registrationSchema.js');
-
-const { makeExecutableSchema } = require('graphql-tools');
-
-// Uses graphQL tools to make create a proper schema
-const executableSchema = makeExecutableSchema({
-	typeDefs: [graphQLSchema],
-	resolvers: graphQLResolvers({ User }),
-});
-
+const executableSchema = require('./server/graphQL/executableSchema');
 /**
  * Internal modules
  */
