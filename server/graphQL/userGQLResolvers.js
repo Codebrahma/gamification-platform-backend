@@ -1,4 +1,4 @@
-const userDataAccess = require('../../db/dataaccess/user');
+const userDataAccess = require('../../db/dataAccess/user');
 
 // Resolver functions for my schema
 const resolvers = {
