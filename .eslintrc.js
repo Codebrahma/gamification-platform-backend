@@ -10,5 +10,6 @@ module.exports = {
     "quotes": ["error", 'single'],
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-indent": ["error", 'tab'],
+    "func-names": 0,
   },
 };
