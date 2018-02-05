@@ -1,7 +1,6 @@
 const boom = require('boom');
-const UserModel = require('../../db/schema/userSchema');
 
-const createUser = require('../common/createUser');
+const userDataAccess = require('../dataaccess/user');
 
 /*
  * Register Function registers with userName, email, password
@@ -14,7 +13,7 @@ const register = async function ({
 	},
 }) {
 	try {
-		return createUser(UserModel, {
+		return userDataAccess.createUser({
 			userName,
 			email,
 			password,

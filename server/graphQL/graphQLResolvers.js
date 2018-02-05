@@ -1,23 +1,21 @@
-const getUserByEmail = require('../common/getUserByEmail');
-const getUserByUserName = require('../common/getUserByUserName');
+const userDataAccess = require('../dataaccess/user');
 
 // Resolver functions for my schema
-const resolvers = models => ({
+const resolvers = () => ({
 	Query: {
 		// Gets User by email
 		getUserByEmail(root, { email }) {
-			return getUserByEmail(models.User, { email });
+			return userDataAccess.getUserByEmail({ email });
 		},
 		// Gets User by userName
 		getUserByUserName(root, { userName }) {
-			return getUserByUserName(models.User, { userName });
+			return userDataAccess.getUserByUserName({ userName });
 		},
 	},
 	Mutation: {
 		// Creates a new user
 		createUser(root, args) {
-			const user = new models.User(args);
-			return user.save().then(response => response);
+			return userDataAccess.createUser(args);
 		},
 	},
 });
