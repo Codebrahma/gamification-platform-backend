@@ -1,7 +1,7 @@
 const userDataAccess = require('../../db/dataaccess/user');
 
 // Resolver functions for my schema
-const resolvers = () => ({
+const resolvers = {
 	Query: {
 		// Gets User by email
 		getUserByEmail(root, { email }) {
@@ -18,6 +18,6 @@ const resolvers = () => ({
 			return userDataAccess.createUser(args);
 		},
 	},
-});
+};
 
 module.exports = resolvers;

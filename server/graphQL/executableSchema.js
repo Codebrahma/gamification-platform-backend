@@ -1,7 +1,8 @@
 // Imports the schema, resolvers and the model
 const userSchema = require('./userGQLSchema.js');
-const graphQLResolvers = require('./graphQLResolvers.js');
+const userResolvers = require('./userGQLResolvers.js');
 const { makeExecutableSchema } = require('graphql-tools');
+const merge = require('lodash/merge');
 
 const RootQuery = `type Query {
   getUserByEmail(email: String!): User
@@ -17,10 +18,13 @@ const SchemaDefinition = `schema {
   mutation: Mutation
 }`;
 
+// Combine all resolvers
+const RootResolver = merge({}, userResolvers);
+
 // Uses graphQL tools to make create a proper schema
 const executableSchema = makeExecutableSchema({
 	typeDefs: [SchemaDefinition, RootQuery, RootMutaion, userSchema],
-	resolvers: graphQLResolvers(),
+	resolvers: RootResolver,
 });
 
 module.exports = executableSchema;
