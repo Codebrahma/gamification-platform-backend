@@ -1,5 +1,5 @@
 const boom = require('boom');
-const UserModel = require('../../db/schema/userSchema');
+const UserModel = require('../schema/userSchema');
 
 const handleDbError = error => boom.boomify(error, {
 	statusCode: 500,

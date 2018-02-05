@@ -1,6 +1,6 @@
 const boom = require('boom');
 
-const userDataAccess = require('../dataaccess/user');
+const userDataAccess = require('../../db/dataaccess/user');
 
 /*
  * Register Function registers with userName, email, password
