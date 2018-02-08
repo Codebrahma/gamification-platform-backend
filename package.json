@@ -30,6 +30,10 @@
     "babel-eslint": "false8.2.1",
     "bluebird": "3.5.0",
     "body-parser": "false1.18.2",
+<<<<<<< HEAD
+=======
+    "boom": "5.2.0",
+>>>>>>> refactor(project): express connect to db and start server
     "bunyan": "1.8.12",
     "config": "1.26.2",
     "cors": "false2.8.4",
