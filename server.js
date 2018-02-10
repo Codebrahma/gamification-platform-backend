@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const config = require('config');
 const logger = require('./server/utils/logger');
 const routes = require('./server/routes');
+const graphql = require('./server/graphQL');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 3000;
@@ -19,7 +20,11 @@ app.use(bodyParser.json());
 
 app.use(require('method-override')());
 
+// Add api routes
 routes(app);
+
+// Add GraphQL routes
+graphql(app);
 
 if (!isProduction) {
 	app.use(errorhandler());

@@ -25,7 +25,7 @@
     "precommit": "yarn lint"
   },
   "dependencies": {
-    "apollo-server-hapi": "false1.3.2",
+    "apollo-server-express": "false1.3.2",
     "axios": "0.16.2",
     "babel-eslint": "false8.2.1",
     "bluebird": "3.5.0",
