@@ -7,4 +7,4 @@ module.exports = function () {
 	authRoutes.post('/registration', authControllers.registration);
 
 	return authRoutes;
-}
+};

@@ -1,7 +1,8 @@
 const express = require('express');
+const config = require('config');
 const authRoutes = require('./authRoutes');
-const apiVersion = config.get('app.apiVersion');
 
+const apiVersion = config.get('app.apiVersion');
 const API_PATH = `/api/${apiVersion}`;
 
 module.exports = function (app) {
@@ -9,4 +10,4 @@ module.exports = function (app) {
 
 	apiRoutes.use('/auth', authRoutes());
 	app.use(API_PATH, apiRoutes);
-}
+};
