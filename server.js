@@ -1,10 +1,11 @@
-const logger = require('./server/utils/logger');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorhandler = require('errorhandler');
 const mongoose = require('mongoose');
 const config = require('config');
+const logger = require('./server/utils/logger');
+const routes = require('./server/routes');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 3000;
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(require('method-override')());
+
+routes(app);
 
 if (!isProduction) {
 	app.use(errorhandler());
