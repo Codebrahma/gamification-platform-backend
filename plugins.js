@@ -1,18 +1,10 @@
 /**
  * Vendor modules
  */
-const Inert = require('inert');
-const Vision = require('vision');
-const HapiSwagger = require('hapi-swagger');
-const Good = require('good');
 const config = require('config');
 const appoloServer = require('apollo-server-hapi');
 
 const executableSchema = require('./server/graphQL/executableSchema');
-/**
- * Internal modules
- */
-const Package = require('./package.json');
 
 const DEVELOPMENT = 'development';
 
@@ -20,40 +12,9 @@ const DEVELOPMENT = 'development';
  * exports array of plugins with configuration.
  * @type {Array}
  */
-let plugins = [];
+const plugins = [];
 
 if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
-	// add hapi swagger integration
-	plugins = plugins.concat([
-		Inert,
-		Vision,
-		{
-			plugin: HapiSwagger,
-			options: {
-				info: {
-					title: Package.description,
-					version: Package.version,
-				},
-				pathPrefixSize: 4,
-			},
-		},
-	]);
-
-	// add good console for log reporting
-	plugins.push({
-		plugin: Good,
-		options: {
-			reporters: {
-				console: [
-					{
-						module: 'good-console',
-					},
-					'stdout',
-				],
-			},
-		},
-	});
-
 	// HAPI Graphql for HTTP endpoints
 	plugins.push({
 		plugin: appoloServer.graphqlHapi,
