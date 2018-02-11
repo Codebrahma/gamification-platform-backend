@@ -28,6 +28,7 @@
     "apollo-server-express": "false1.3.2",
     "axios": "0.16.2",
     "babel-eslint": "false8.2.1",
+    "bcrypt": "false1.0.3",
     "bluebird": "3.5.0",
     "body-parser": "false1.18.2",
     "boom": "5.2.0",
