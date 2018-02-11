@@ -6,6 +6,7 @@
     "apiVersion": "1.0",
     "dbConfig": {
     	"url": "mongodb://localhost/gamification"
-    }
+		},
+		"token_secret": "Keep it secret"
   }
 }
