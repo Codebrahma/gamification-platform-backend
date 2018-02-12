@@ -1,7 +1,15 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../../db/schema/userSchema');
+const config = require('config');
 
 const saltRounds = 8;
+
+function generateToken(user) {
+	return jwt.sign(user, config.get('app.token_secret'), {
+		expiresIn: 604800, // in seconds
+	});
+}
 
 exports.registration = function (req, res, next) {
 	const { userName, email, password } = req.body;
@@ -25,4 +33,11 @@ exports.registration = function (req, res, next) {
 					});
 			}
 		}).catch(next);
+};
+
+exports.login = function (req, res) {
+	res.status(200).json({
+		token: `${generateToken(req.body)}`,
+		user: res.user,
+	});
 };

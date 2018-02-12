@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const { JwtStrategy, ExtractJwt } = require('passport-jwt');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt; //  eslint-disable-line
 const bcrypt = require('bcrypt');
 const config = require('config');
 const User = require('../../db/schema/userSchema');
