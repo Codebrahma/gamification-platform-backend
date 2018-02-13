@@ -84,3 +84,5 @@ connect()
 	.on('error', logger.error)
 	.on('disconnected', connect)
 	.once('open', listen);
+
+module.exports = app;

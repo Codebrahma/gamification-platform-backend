@@ -1,5 +1,12 @@
 {
   "app": {
-    "logLevel": "fatal"
+    "port": "3030",
+    "name": "gamification-platform-backend",
+    "logLevel": "info",
+    "apiVersion": "1.0",
+    "dbConfig": {
+    	"url": "mongodb://localhost/gamification"
+		},
+		"token_secret": "Keep it secret"
   }
 }
