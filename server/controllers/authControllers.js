@@ -30,7 +30,7 @@ exports.registration = function (req, res, next) {
 							password: hash,
 						});
 						user.save().then(({ _id }) => res.json({ _id, userName, email })).catch(next);
-					});
+					}).catch(next);
 			}
 		}).catch(next);
 };
