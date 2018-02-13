@@ -76,8 +76,10 @@
     "mocha-lcov-reporter": "false1.3.0",
     "nock": "9.0.14",
     "nodemon": "false1.14.12",
+    "should": "false13.2.1",
     "sinon": "3.2.1",
-    "sinon-chai": "2.13.0"
+    "sinon-chai": "2.13.0",
+    "supertest": "false3.0.0"
   },
   "config": {
     "commitizen": {
