@@ -35,9 +35,8 @@ exports.registration = function (req, res, next) {
 		}).catch(next);
 };
 
-exports.login = function (req, res) {
+exports.login = function ({ user: { _id, userName, email } }, res) {
 	res.status(200).json({
-		token: `${generateToken(req.body)}`,
-		user: res.user,
+		token: generateToken({ _id, userName, email }),
 	});
 };
