@@ -6,5 +6,7 @@ cache:
   - node_modules
 git:
   depth: 3
+services:
+  - mongodb
 script:
   - yarn lint && yarn run test:coverage

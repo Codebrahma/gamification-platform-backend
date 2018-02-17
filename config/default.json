@@ -5,7 +5,7 @@
     "logLevel": "info",
     "apiVersion": "1.0",
     "dbConfig": {
-    	"url": "mongodb://localhost/gamification"
+    	"url": "mongodb://127.0.0.1/gamification"
 		},
 		"token_secret": "Keep it secret"
   }
