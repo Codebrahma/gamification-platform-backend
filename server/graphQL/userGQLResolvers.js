@@ -1,22 +1,16 @@
-const userDataAccess = require('../../db/dataAccess/user');
+const User = require('../../db/schema/userSchema');
 
 // Resolver functions for my schema
 const resolvers = {
 	Query: {
 		// Gets User by email
-		getUserByEmail(root, { email }) {
-			return userDataAccess.getUserByEmail({ email });
-		},
+		getUserByEmail: (root, { email }) => User.findOne({ email }),
 		// Gets User by userName
-		getUserByUserName(root, { userName }) {
-			return userDataAccess.getUserByUserName({ userName });
-		},
+		getUserByUserName: (root, { userName }) => User.findOne({ userName }),
 	},
 	Mutation: {
 		// Creates a new user
-		createUser(root, args) {
-			return userDataAccess.createUser(args);
-		},
+		createUser: (root, args) => new User(args).save(),
 	},
 };
 

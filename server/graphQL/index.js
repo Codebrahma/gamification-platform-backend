@@ -3,6 +3,8 @@ const userSchema = require('./userGQLSchema.js');
 const userResolvers = require('./userGQLResolvers.js');
 const { makeExecutableSchema } = require('graphql-tools');
 const merge = require('lodash/merge');
+const bodyParser = require('body-parser');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
 const RootQuery = `type Query {
   getUserByEmail(email: String!): User
@@ -27,4 +29,7 @@ const executableSchema = makeExecutableSchema({
 	resolvers: RootResolver,
 });
 
-module.exports = executableSchema;
+module.exports = function (app) {
+	app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: executableSchema }));
+	app.use('/graphiql', graphiqlExpress({ endpointURL: './graphql' }));
+};
