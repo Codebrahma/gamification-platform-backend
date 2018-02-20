@@ -1,4 +1,15 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../../db/schema/userSchema');
+const config = require('config');
+
+const saltRounds = 8;
+
+function generateToken(user) {
+	return jwt.sign(user, config.get('app.token_secret'), {
+		expiresIn: 604800, // in seconds
+	});
+}
 
 exports.registration = function (req, res, next) {
 	const { userName, email, password } = req.body;
@@ -9,14 +20,23 @@ exports.registration = function (req, res, next) {
 	User.findOne({ $or: [{ email }, { userName }] })
 		.then((existingUser) => {
 			if (existingUser) {
-				return res.status(422).send({ error: 'That email address or username is already in use.' });
+				res.status(422).send({ error: 'That email address or username is already in use.' });
+			} else {
+				bcrypt.hash(password, saltRounds)
+					.then((hash) => {
+						const user = new User({
+							userName,
+							email,
+							password: hash,
+						});
+						user.save().then(({ _id }) => res.json({ _id, userName, email })).catch(next);
+					}).catch(next);
 			}
-			const user = new User({
-				userName,
-				email,
-				password,
-			});
+		}).catch(next);
+};
 
-			return user.save().then(newUser => res.json(newUser)).catch(next);
-		});
+exports.login = function ({ user: { _id, userName, email } }, res) {
+	res.status(200).json({
+		token: generateToken({ _id, userName, email }),
+	});
 };

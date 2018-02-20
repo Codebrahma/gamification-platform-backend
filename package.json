@@ -28,8 +28,10 @@
     "apollo-server-express": "false1.3.2",
     "axios": "0.16.2",
     "babel-eslint": "false8.2.1",
+    "bcrypt": "false1.0.3",
     "bluebird": "3.5.0",
     "body-parser": "false1.18.2",
+    "boom": "5.2.0",
     "bunyan": "1.8.12",
     "config": "1.26.2",
     "cors": "false2.8.4",
@@ -43,11 +45,14 @@
     "http-status": "1.0.1",
     "inert": "^5.1.0",
     "joi": "^10.6.0",
+    "jsonwebtoken": "false8.1.1",
     "lodash": "4.17.4",
     "method-override": "false2.3.10",
     "mongoose": "^5.0.3",
     "newrelic": "2.2.0",
     "passport": "false0.4.0",
+    "passport-jwt": "false3.0.1",
+    "passport-local": "false1.0.0",
     "vision": "^5.3.1"
   },
   "devDependencies": {
@@ -71,8 +76,10 @@
     "mocha-lcov-reporter": "false1.3.0",
     "nock": "9.0.14",
     "nodemon": "false1.14.12",
+    "should": "false13.2.1",
     "sinon": "3.2.1",
-    "sinon-chai": "2.13.0"
+    "sinon-chai": "2.13.0",
+    "supertest": "false3.0.0"
   },
   "config": {
     "commitizen": {
